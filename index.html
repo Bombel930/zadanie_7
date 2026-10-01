@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Zadanie JavaScript</title>
+    <style>
+        #kontener {
+            width: 50px;
+            height: 50px;
+            border: 1px solid #000;
+            overflow: hidden;
+            font-size: 16px;
+        }
+        .wyroznione {
+            font-weight: bold;
+        }
+        #liczba {
+            margin-top: 10px;
+            min-height: 20px;
+            border: 1px dashed #ccc;
+            padding: 5px;
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+
+
+    <div id="kontener">Bartosz Grzywacz</div>
+
+    <br>
+
+
+    <p class="wyroznione">Radom</p>
+
+    <br>
+
+   >
+    <input type="text" id="artykul">
+    <div id="liczba"></div>
+
+    <script>
+   
+        const kontener = document.getElementById('kontener');
+
+    
+        kontener.addEventListener('click', function() {
+            const losowyKolor = '#' + Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0');
+            kontener.style.backgroundColor = losowyKolor;
+        });
+
+        kontener.addEventListener('mouseenter', function() {
+            kontener.style.fontSize = "32px"; 
+        });
+
+        kontener.addEventListener('mouseleave', function() {
+            kontener.style.fontSize = "16px"; 
+        });
+
+
+        
+        const paragraf = document.querySelector('.wyroznione');
+
+
+        paragraf.addEventListener('dblclick', function() {
+            paragraf.textContent = 'powiat radomski';
+        });
+
+        paragraf.addEventListener('mouseenter', function() {
+            console.log(paragraf.textContent);
+        });
+
+
+       
+        const artykul = document.getElementById('artykul');
+        const divLiczba = document.getElementById('liczba');
+
+     
+        let aktualnaSzerokosc = 150;
+        artykul.style.width = aktualnaSzerokosc + 'px';
+
+        artykul.addEventListener('keydown', function(event) {
+          
+            aktualnaSzerokosc += 1;
+            artykul.style.width = aktualnaSzerokosc + 'px';
+
+           
+            if (event.key >= '0' && event.key <= '9') {
+                divLiczba.textContent += event.key;
+            }
+        });
+    </script>
+
+</body>
+</html>
